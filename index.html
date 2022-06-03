@@ -1,0 +1,129 @@
+<div id="app"></div>
+
+<!--
+  План урока:
+  1. Работа с textarea
+  2. Блокировка элементов
+  3. Работа с checkbox
+  4. Атрибуты без значений
+  5. Работа с radiobutton
+  6. События OnChange, Input
+  7. Методы Focus и Blur
+  8. Работа с Select;
+  9. Пользовательские атрибуты;
+  10. Объект Event;
+-->
+
+<!--1. Работа с textarea-->
+<textarea class='elemental'>text</textarea>
+
+<!--
+
+  Текст записывается между ><, это отличие,
+  однако считывать и текст тега необходимо через value, а не через innerHTML
+
+-->
+
+<!--2. Блокировка элементов
+
+  Атрибут disabled используется для блокировки элементов
+  Для установки, присвоить значения true
+  Для того чтобы убрать, присвоить значение false
+
+  Интернет говорит:
+  "Disabled атрибут можно установить, чтобы удержать пользователя от использования элемента до тех пор, пока не будет 
+  выполнено какое-либо другое условие (например, выбор флажка и т.д.). 
+  Затем JavaScript может удалить disabled значение и сделать элемент пригодным для использования.""
+
+-->
+<script>
+  let elem = document.querlySelector('.elem'); // выбираем из файла элемент по общему селектору
+  console.log(elem.disabled); // выведет true
+  elem.disabled = false; // присвоим атрибуту значение false, тем самым разблокируем элемент
+</script>
+
+<!--3. Работа с checkbox 
+  checkbox представляет из себя специальный флажок, который может находится в 2х положениях: отмечен или нет.
+-->
+<script>
+  <input class='elem' type='checkbox'>; // checkbox не отмечен
+  <input class='elem' type='checkbox' checked>; // checkbox отмечен
+</script>
+
+<!--4. Атрибуты без значений
+  Пусть дан заблокированый элемент и кнопка
+
+  Нужно сделать так, чтобы при нажатии на кнопку, элемент блокировался и разблокировался
+  Решение:
+-->
+
+<input class='er' disabled>
+<input class='button' type='submit'>
+
+<script>
+  let er = document.querlySelector('.er');
+  let button = document.querlySelctor('.button'); // получаем ссылки на элементы
+
+  button.addEventListener('click', function(){ //добавояем слушатель 
+    if (elem.disabled) { 
+      elem.disabled=false; // если заблокирован разблокиоровть
+    } else {
+      elem.disabled=true; // если разблокирован заблокировать
+    }
+  });
+
+  button.addEventListener('click', function(){ // то же, но короче
+    elem.disabled = !elem.disabled; // изменить состояние атрибута
+  });
+</script>
+
+<!-- 5. Работа с radiobutton
+
+radiobutton - тип input, представляет из себя список с выборами  
+чтобы сгруппировать несколько radiobutton они должны иметь одинаковое значение атрибута name
+
+для различия между собой, присваиваются разные значения атрибутов value
+
+для того, чтобы отметить какую то радиокнопку отмеченой, нужно присвоить атрибут checked
+-->
+<input type='radio' name='elem' value='1' checked>
+<input type='radio' name='elem' value='2'>
+<input type='radio' name='elem' value='3'>
+<input type='radio' name='elem' value='4'>
+
+<!--
+сделаем кнопку, при нажатии накоторую выводится value выбраной на данной кнопки
+
+осуществляем выбраное
+-->
+
+<script>
+let radios = document.querlySelectorAll('input[type='radio']');
+let button = document.querlySelctor('.button'); button.addEventListener('click', function() {
+  for (let radio of radios) {
+    if (radio.checked) {
+      console.log(radio.value);
+    }
+  }
+});
+</script>
+
+<!--6. События OnChange, Input
+
+событием OnChange является изменение текста в поле данных
+
+событием Input происходит при вводе каждого нового символа в поле ввода, при каждом нажатии кнопки клавиатуры
+
+ниже рассмотрим примеры использования
+-->
+<input class='elem' value='text'>
+<script>
+//событие OnChange
+let elem = document.querlySelctor('#elem'); elem.addEventListener('change', function(){ // каждый раз при изменении текста в поле ввода, выводим данные в консоль
+  console.log(this.value);
+});
+//событие Input
+let elem = document.querlySelector('#elem'); elem.addEventListener('input', function(){// каждый раз при введени нового символа в поле ввода, выводим данные в консоль
+  console.log(this,value)
+})
+</script>
