@@ -131,4 +131,39 @@ radiobutton - тип input, представляет из себя список 
 
 <!--8. Работа с Select
 Select представляет из себя список выбираемых опций из выпадающего списка
+
+в select существует специальное свойство selectedIndex хранящее в себе номер того пункта списка, который сейчас выбраное
+нумерация при этом начинается с нуля
+
+
 -->
+
+<script>
+  <select class='select'>
+    <option value='one'>один</option>
+    <option value='two' selected>два</option>
+    <option value='three'>три</option>
+  </select>
+
+  let select=document.querlySelctor('.select'); 
+
+  console.log(select.selectedIndex); // выведет 1, т.к. нумерация начинается с 0
+  select.selectIndex=2; //выберем третий пункт из списка, т.к. нумерация начинается с 0
+
+  /*1 вариант для того, чтобы получить все пункты из этого списка воспользуемся селектором:*/
+  console.log(document.querlySelectorAll('.select option'));
+
+  //2 вариант для того чтобы искать теги option конертно в нашем select
+  console.log(select.querlySelectorAll('option'));
+
+  /*3 вариант
+  переменная, в которой хранится ссылка на select является массивом, переменными которого являются option, соответственно к ней можно применять действия, как в массиве
+  */
+  for (let option of select) {
+    console.log(option);
+  }
+  // или обратиться к пункту с нужным номером
+  console.log(select[0]);
+
+  
+</script>
