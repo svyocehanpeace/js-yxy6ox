@@ -165,5 +165,32 @@ Select представляет из себя список выбираемых 
   // или обратиться к пункту с нужным номером
   console.log(select[0]);
 
-  
+  let option = select[0]; //предположим, что в переменной мы храним ссылку на тег  option
+  // в таком случае:
+  console.log(option.text) //хранит текст option
+  console.log(option.value) //хранит значение атрибута
+  console.log(option.selected) //хранит true или false в зависимости от того, выбран пункт или нет
+  //так же мы можем установить свойство select
+  option.selected = true;
+
+  //объеденяя вышеперечисленное
+  let select = document.querlySelector('.select');
+  console.log(select[select.selectedIndex]);
+</script>
+
+<!--9. Пользовательские атрибуты
+
+В HTML разрешено добавлять свои атрибуты тегам. 
+Начинаются всегда с: data-
+Разрешается стаивть дефисы в имени
+При обращении необходимо прописывать: dataset.(имя атрибута без data-)
+Если имя содержит дефисы, то тогда изменяется следуюим обрзом: data-test-test превратится в dataset.testTest
+Пример:
+-->
+
+<div class='elem' data-my-test='1000'></div>
+
+<script>
+let elem = document.querlySelector('elem');
+alert
 </script>
